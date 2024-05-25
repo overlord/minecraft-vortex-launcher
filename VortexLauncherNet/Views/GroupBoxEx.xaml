@@ -1,0 +1,26 @@
+﻿<UserControl
+	x:Class="VortexLauncherNet.Views.GroupBoxEx"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	x:Name="self"
+	d:Width="200"
+	x:FieldModifier="private"
+	mc:Ignorable="d">
+	<GroupBox>
+		<GroupBox.Header>
+			<DockPanel>
+				<TextBlock FontWeight="Bold" Text="{Binding ElementName=self, Path=HeaderText}">
+					<TextBlock.InputBindings>
+						<MouseBinding Command="{Binding ElementName=self, Path=ToggleVisibility}" MouseAction="LeftClick" />
+						<MouseBinding Command="{Binding ElementName=self, Path=ToggleVisibility}" MouseAction="LeftDoubleClick" />
+					</TextBlock.InputBindings>
+				</TextBlock>
+			</DockPanel>
+		</GroupBox.Header>
+		<GroupBox.Content>
+			<ContentPresenter Content="{Binding ElementName=self, Path=MainContent}" Visibility="{Binding ElementName=self, Path=ContentVisibility}" />
+		</GroupBox.Content>
+	</GroupBox>
+</UserControl>
