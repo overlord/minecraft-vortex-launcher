@@ -1,0 +1,47 @@
+﻿<Window
+	x:Class="VortexLauncherNet.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:VortexLauncherNet"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	Title="Vortex Minecraft Launcher .NET"
+	Width="275"
+	Height="250"
+	d:DataContext="{d:DesignInstance local:MainWindowVM,
+	                                 IsDesignTimeCreatable=True}"
+	x:ClassModifier="internal"
+	ResizeMode="NoResize"
+	Topmost="True"
+	WindowStartupLocation="CenterScreen"
+	mc:Ignorable="d">
+	<StackPanel Orientation="Vertical">
+		<TextBox Margin="4,4,4,0" Text="{Binding PlayerName.Value}" />
+		<TextBox Margin="4,4,4,0" Text="{Binding RamAmount.Value}" />
+
+		<ComboBox
+			Margin="4,4,4,0"
+			ItemsSource="{Binding MinecraftVersions}"
+			SelectedValue="{Binding MinecraftVersionSelected.Value, Mode=TwoWay}" />
+
+		<ComboBox
+			Margin="4,4,4,0"
+			DisplayMemberPath="DisplayName"
+			ItemsSource="{Binding JavaVersions}"
+			SelectedValue="{Binding JavaVersionSelected.Value, Mode=TwoWay}" />
+
+		<Button Margin="4,4,4,0" Command="{Binding PlayCommand}">
+			<Button.Content>
+				<TextBlock FontWeight="Bold" Text="Play" />
+			</Button.Content>
+		</Button>
+		<Button
+			Margin="4,4,4,0"
+			Command="{Binding DownloadCommand}"
+			Content="Download" />
+		<Button
+			Margin="4,4,4,0"
+			Command="{Binding SettingsCommand}"
+			Content="Settings" />
+	</StackPanel>
+</Window>
